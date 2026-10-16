@@ -1,26 +1,18 @@
 import os 
 import streamlit as st
 import questionary
-import json
-from pathlib import Path
 from langchain_groq import ChatGroq
-from langchain_core.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate,load_prompt
 from dotenv import load_dotenv
 
-env_path=Path(__file__).resolve().parent.parent.parent / ".env" 
-load_dotenv(dotenv_path=env_path)
+load_dotenv('/public/Samrat_Learning_Gen_Ai/.env')
 api_key= os.getenv('GROQ_API_KEY')
- 
 
 modell=ChatGroq(
   model="openai/gpt-oss-20b",
   api_key=api_key
 )
-
-path = Path(__file__).resolve().parent / "template2.json"
-with open(path, "r") as f:
-    prompt_data = json.load(f)
-template = PromptTemplate(**prompt_data)
+template=load_prompt("/public/Samrat_Learning_Gen_Ai/template2.json")
 
 print("="*48)
 print("="*48)
@@ -60,13 +52,10 @@ print("-"*48)
 print(f"🗣️ Assistant:Hello {user_name},Ask me a question")
 print()
 
-# chat_histroy=[]
-
 def chat_section(go_chat,style_input,length_input):
   while(go_chat):
     print("-"*48)
     user_query=input(f"Enter your qsn  dear {user_name}😎:")
-    # chat_histroy.append(user_query)
     print(user_query)
     if(user_query.lower()=="end"):
       print("\nAs You Have written End Chat is Ended....🎇🎇🎆🎇🎆🎇🎆")
@@ -78,13 +67,12 @@ def chat_section(go_chat,style_input,length_input):
     else:
       chain= template | modell
       assistant_res=chain.invoke({
-        'user_query':user_query,#chat_histroy,
+        'user_query':user_query,
         'style_input':style_input,
         'length_input':length_input
       })
       
       assistant_response=assistant_res.content
-      # chat_histroy.append(assistant_response)
       print(f"\n🗣️ Assistant:\n{assistant_response}")
       print("-"*48)
       
@@ -110,7 +98,4 @@ while(undo):
   else:
     undo=False
     print(f"\nThanks For Interacting With Our Chat Model🎖️🎖️🎖️🎖️")
-    
-    
-# print(chat_histroy)
 #        python3 chatbot.py
