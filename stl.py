@@ -44,7 +44,7 @@ prompt=template.invoke({
   'style_input':style_input,
   'length_input':length_input
 })
-st.title('SAMRATTTT')
+st.title('SAMRAT DHAKAL')
 st.header('Research Tool')
 
 if st.button('Summarize'):
