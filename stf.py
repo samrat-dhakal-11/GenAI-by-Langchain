@@ -12,6 +12,7 @@ llm = ChatGroq(
     temperature=0.7,
     max_tokens=1000
 )
+
 st.title('SAMRATTTT')
 st.header('Research Tool')
 user_input=st.text_input('Enter your Prompt')
