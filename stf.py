@@ -13,7 +13,7 @@ llm = ChatGroq(
     max_tokens=1000
 )
 
-st.title('SAMRATTTT')
+st.title('SAMRAT DHAKAL')
 st.header('Research Tool')
 user_input=st.text_input('Enter your Prompt')
 
