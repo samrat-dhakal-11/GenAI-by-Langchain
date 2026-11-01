@@ -3,7 +3,6 @@ from typing import TypedDict, Annotated
 from langgraph.types import Send
 from langgraph.graph import START, END, StateGraph
 
-# 1. Define the state schema
 class SubSectionState(TypedDict):
     topic: str
     section_name: str
