@@ -2,6 +2,7 @@ import os
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import streamlit as st
+
 load_dotenv(dotenv_path="/public/Samrat_Learning_Gen_Ai/.env")
 api_key = os.getenv("GROQ_API_KEY")
 
@@ -15,6 +16,7 @@ llm = ChatGroq(
 
 st.title('SAMRAT DHAKAL')
 st.header('Research Tool')
+
 user_input=st.text_input('Enter your Prompt')
 
 if st.button('Summarize'):
