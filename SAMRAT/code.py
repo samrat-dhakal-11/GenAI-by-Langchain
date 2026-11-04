@@ -140,7 +140,7 @@ def main() -> None:
             history.append(AIMessage(content=answer))
         except Exception as exc:
             console.print(f"\n[bold red]Request failed: {exc}[/bold red]\n")
-            history.pop()  # Drop unanswered query to keep state consistent
+            history.pop() 
 
         print()
 
