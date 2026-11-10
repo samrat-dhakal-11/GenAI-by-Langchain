@@ -6,7 +6,6 @@ import streamlit as st
 load_dotenv(dotenv_path="/public/Samrat_Learning_Gen_Ai/.env")
 api_key = os.getenv("GROQ_API_KEY")
 
-
 llm = ChatGroq(
     api_key=api_key,
     model="openai/gpt-oss-20b",
